@@ -15,5 +15,33 @@ const layers = [
 
 function find(atomNumber) {
 
-    function layers(number){}
+    let i = 0;
+    let answer = '';
+
+    function findLayers(number){
+
+        let [energyLevel, layerName, layerStorage] = layers[i];
+
+        const mine = number - layerStorage;
+
+        if (mine < 0) {
+
+            if (number !== 0){
+                answer = answer + `${energyLevel}${layerName}${number} `;
+            }
+
+            console.log(answer);
+            return null;
+        }
+
+        answer = answer + `${energyLevel}${layerName}${layerStorage} `;
+
+        i++;
+
+        findLayers(mine);
+    }
+
+    findLayers(atomNumber);
 }
+
+find(atom);
